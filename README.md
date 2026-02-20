@@ -24,13 +24,14 @@ Then tell Claude: `scrape trustpilot reviews for example.org`
 
 ## Setup
 
-The scraper uses Puppeteer to load Trustpilot pages in a real browser.
+The scraper and its dependencies are bundled. Just install:
 
 ```bash
-npm install puppeteer
+cd ~/.claude/skills/trustpilot-scraper
+npm install
 ```
 
-Configure `SCRAPER_PATH` in the skill to point to wherever your `tpscraper.js` scraper script lives.
+This installs Puppeteer with stealth plugin for reliable, undetected scraping.
 
 ## Usage
 
@@ -76,8 +77,7 @@ Breakdown of 1-5 star reviews with percentages and average.
 ## Requirements
 
 - Node.js 18+
-- Puppeteer (`npm install puppeteer`)
-- `tpscraper.js` scraper script
+- Dependencies installed via `npm install` (Puppeteer + stealth plugin)
 
 ## License
 

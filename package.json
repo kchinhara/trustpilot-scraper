@@ -1,0 +1,16 @@
+{
+  "name": "trustpilot-scraper",
+  "version": "1.1.0",
+  "description": "Modern web scraper for Trustpilot reviews with PPC-actionable analysis",
+  "main": "tpscraper.js",
+  "scripts": {
+    "start": "node tpscraper.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.7.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "author": "Kuda Chinhara <https://agenticppcads.com>",
+  "license": "MIT"
+}

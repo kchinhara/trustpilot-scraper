@@ -48,23 +48,14 @@ Built by [Kuda Chinhara](https://linkedin.com/in/kudachinhara) at [Agentic PPC A
 
 ## Setup (One-Time)
 
-The scraper requires a local copy of `tpscraper.js` with Puppeteer installed.
+The scraper script (`tpscraper.js`) is bundled with this skill. Just install the dependencies:
 
 ```bash
-# Clone or create a trustpilot-scraper directory somewhere on your machine
-mkdir trustpilot-scraper && cd trustpilot-scraper
-npm install puppeteer
-# Place tpscraper.js in this directory
+cd ~/.claude/skills/trustpilot-scraper
+npm install
 ```
 
-### Configuration
-
-Set `SCRAPER_PATH` to wherever your `tpscraper.js` lives. Outputs are saved relative to your current working directory.
-
-```
-SCRAPER_PATH: <path-to-your-trustpilot-scraper-directory>
-SCRAPER_SCRIPT: tpscraper.js
-```
+This installs Puppeteer with stealth plugin for reliable scraping. Outputs are saved relative to the skill directory.
 
 ---
 
@@ -82,10 +73,10 @@ SCRAPER_SCRIPT: tpscraper.js
 
 2. **Verify scraper is ready:**
    ```bash
-   ls "{SCRAPER_PATH}/tpscraper.js"
-   ls "{SCRAPER_PATH}/node_modules/puppeteer"
+   ls ~/.claude/skills/trustpilot-scraper/tpscraper.js
+   ls ~/.claude/skills/trustpilot-scraper/node_modules/puppeteer
    ```
-   - If `node_modules` missing, run: `cd "{SCRAPER_PATH}" && npm install`
+   - If `node_modules` missing, run: `cd ~/.claude/skills/trustpilot-scraper && npm install`
 
 3. **Create output directory** (if client specified):
    ```bash
@@ -94,19 +85,19 @@ SCRAPER_SCRIPT: tpscraper.js
 
 ### Phase 2: Scrape
 
-1. **Run the scraper** from the scraper directory (output files are created in CWD):
+1. **Run the scraper** from the skill directory (output files are created in CWD):
    ```bash
-   cd "{SCRAPER_PATH}" && node tpscraper.js --domain "[domain]" [--searchTerm "[term]"] [--maxreviews [N]] [--maxpages [N]]
+   cd ~/.claude/skills/trustpilot-scraper && node tpscraper.js --domain "[domain]" [--searchTerm "[term]"] [--maxreviews [N]] [--maxpages [N]]
    ```
 
 2. **Verify output files exist:**
-   - Look for `trustpilot_[sanitized_domain].json` and `.csv` in the scraper directory
+   - Look for `trustpilot_[sanitized_domain].json` and `.csv` in the skill directory
    - The scraper sanitizes domain names: `example.org` → `trustpilot_example.json`, `example.co.uk` → `trustpilot_example.json`
 
 3. **Move output to client directory** (if client specified):
    ```bash
-   cp trustpilot_[name].json "clients/[client]/trustpilot/"
-   cp trustpilot_[name].csv "clients/[client]/trustpilot/"
+   cp ~/.claude/skills/trustpilot-scraper/trustpilot_[name].json "clients/[client]/trustpilot/"
+   cp ~/.claude/skills/trustpilot-scraper/trustpilot_[name].csv "clients/[client]/trustpilot/"
    ```
 
 ### Phase 3: Analyze

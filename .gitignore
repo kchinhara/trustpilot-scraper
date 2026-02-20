@@ -1,0 +1,7 @@
+node_modules/
+debug/
+*.stackdump
+
+# Scraper output files (generated at runtime)
+trustpilot_*.json
+trustpilot_*.csv
