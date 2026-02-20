@@ -20,7 +20,7 @@ cp -r trustpilot-scraper ~/.claude/skills/trustpilot-scraper
 cp -r trustpilot-scraper your-project/.claude/skills/trustpilot-scraper
 ```
 
-Then tell Claude: `scrape trustpilot reviews for elder.org`
+Then tell Claude: `scrape trustpilot reviews for example.org`
 
 ## Setup
 
@@ -35,16 +35,16 @@ Configure `SCRAPER_PATH` in the skill to point to wherever your `tpscraper.js` s
 ## Usage
 
 ```
-/trustpilot elder.org
-/trustpilot care-verify elder.org
-/trustpilot care-verify elder.org --search "bad service" --max 200
+/trustpilot example.org
+/trustpilot acme-corp example.org
+/trustpilot acme-corp example.org --search "bad service" --max 200
 ```
 
 ### Options
 
 | Flag | Description |
 |------|-------------|
-| First arg | Domain as it appears on Trustpilot (e.g., `elder.org`) |
+| First arg | Domain as it appears on Trustpilot (e.g., `example.org`) |
 | Client name (optional) | Saves output to `clients/[client]/trustpilot/` |
 | `--search [term]` | Filter reviews by keyword |
 | `--max [number]` | Maximum reviews to collect |

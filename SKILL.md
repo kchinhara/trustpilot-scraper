@@ -23,9 +23,9 @@ Built by [Kuda Chinhara](https://linkedin.com/in/kudachinhara) at [Agentic PPC A
 ## Quick Start
 
 ```
-/trustpilot elder.org
-/trustpilot care-verify elder.org
-/trustpilot care-verify elder.org --search "bad service" --max 200
+/trustpilot example.org
+/trustpilot acme-corp example.org
+/trustpilot acme-corp example.org --search "bad service" --max 200
 ```
 
 ---
@@ -74,7 +74,7 @@ SCRAPER_SCRIPT: tpscraper.js
 
 1. **Parse arguments from $ARGUMENTS:**
    - First arg: If it matches a known client folder in `clients/`, treat as client name and next arg as domain. Otherwise treat as domain.
-   - Domain (required): Company domain as it appears on Trustpilot (e.g., `elder.org`, `example.co.uk`)
+   - Domain (required): Company domain as it appears on Trustpilot (e.g., `example.org`, `example.co.uk`)
    - Client name (optional): Maps to `clients/[client]/trustpilot/` output directory
    - `--search [term]`: Filter reviews by keyword
    - `--max [number]`: Maximum reviews to collect (default: no limit)
@@ -101,7 +101,7 @@ SCRAPER_SCRIPT: tpscraper.js
 
 2. **Verify output files exist:**
    - Look for `trustpilot_[sanitized_domain].json` and `.csv` in the scraper directory
-   - The scraper sanitizes domain names: `elder.org` → `trustpilot_elder.json`, `example.co.uk` → `trustpilot_example.json`
+   - The scraper sanitizes domain names: `example.org` → `trustpilot_example.json`, `example.co.uk` → `trustpilot_example.json`
 
 3. **Move output to client directory** (if client specified):
    ```bash
