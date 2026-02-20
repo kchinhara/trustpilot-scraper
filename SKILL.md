@@ -259,4 +259,4 @@ After execution:
 
 ---
 
-*Built by [Kuda Chinhara](https://linkedin.com/in/kudachinhara) | [Agentic PPC Ads](https://agenticppcads.com) | [X: @AIPPCKuda](https://x.com/AIPPCKuda)*
+*Built by [Kuda Chinhara](https://linkedin.com/in/kudachinhara) | [Agentic PPC Ads](https://agenticppcads.com) | [X: @kudachinhara](https://x.com/AIPPCKuda)*
