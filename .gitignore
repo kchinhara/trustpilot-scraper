@@ -5,3 +5,7 @@ debug/
 # Scraper output files (generated at runtime)
 trustpilot_*.json
 trustpilot_*.csv
+
+# Session log spill from Claude Code running with cwd inside this submodule.
+# Not scraper output and never part of the skill.
+z-logs/

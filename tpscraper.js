@@ -227,9 +227,9 @@ async function scrapeTrustpilotReviews() {
   // Initialize Puppeteer with stealth plugin to avoid detection
   puppeteer.use(StealthPlugin());
   
-  // Launch browser settings
+  // Launch browser settings - non-headless by default for Cloudflare bypass
   const browserOptions = {
-    headless: !config.debug, // Set to false for debug mode
+    headless: false,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -237,8 +237,7 @@ async function scrapeTrustpilotReviews() {
       '--disable-accelerated-2d-canvas',
       '--disable-gpu',
       '--window-size=1920,1080',
-      '--disable-web-security',
-      '--disable-features=IsolateOrigins,site-per-process'
+      '--disable-blink-features=AutomationControlled'
     ]
   };
   
@@ -283,6 +282,14 @@ async function scrapeTrustpilotReviews() {
       'Upgrade-Insecure-Requests': '1'
     });
     
+    // Warmup: visit Trustpilot homepage first to build trust with Cloudflare
+    console.log('Warming up: visiting Trustpilot homepage first...');
+    await page.goto('https://www.trustpilot.com/', {
+      waitUntil: 'networkidle2',
+      timeout: 30000
+    });
+    await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
+
     // Construct the Trustpilot URL with optional search parameter
     let trustpilotURL = `https://www.trustpilot.com/review/${config.companyURL}`;
     if (config.searchTerm) {
@@ -290,10 +297,10 @@ async function scrapeTrustpilotReviews() {
       const encodedSearch = encodeURIComponent(config.searchTerm);
       trustpilotURL += `?search=${encodedSearch}`;
     }
-    
+
     // Navigate to the Trustpilot page with retry
     console.log(`Navigating to: ${trustpilotURL}`);
-    
+
     const response = await retryWithBackoff(async () => {
       return await page.goto(trustpilotURL, {
         waitUntil: 'networkidle2',
